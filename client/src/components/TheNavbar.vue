@@ -1,6 +1,32 @@
 <template>
-<div class="bg-gray-800 w-screen h-16 flex items-center justify-between">
-	<h1 class="ml-3 font-bold text-4xl"><span class="text-green-500">F</span><span class="text-blue-500">M</span><span class="text-gray-500 font-medium text-xl"> Records</span></h1>
-	<svg class="h-10 w-10 mr-3 text-gray-500 fill-current" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+<div class="fixed bg-gray-800 w-screen xl:w-40 h-16 xl:h-screen flex xl:flex-col items-center xl:items-start justify-between xl:justify-start">
+	<h1 class="ml-3 xl:ml-2 xl:mt-2 font-bold text-4xl"><span class="text-green-400">F</span><span class="text-blue-400">M</span></h1>
+	<h1 class="mr-auto ml-1 xl:ml-2 mt-2 xl:mt-0 text-gray-500 font-medium text-xl"><span class="hidden xl:inline-block">Digital</span> Records</h1>
+	<svg @click="$emit('toggleModal')" class="xl:hidden h-10 w-10 mr-3 text-gray-500 fill-current cursor-pointer" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+
+	<div class="hidden xl:flex flex-grow flex-col mt-4 mx-auto items-center">
+		<router-link class="router-btn" to="/">Home</router-link>
+		<router-link class="router-btn" to="/courses">Courses</router-link>
+		<router-link class="router-btn" to="/faculty">Faculty</router-link>
+		<router-link class="router-btn" to="/yearbook">Yearbook</router-link>
+		<router-link to="/login" class="mt-auto mb-8 text-3xl font-bold text-green-400">Login</router-link>
+	</div>
 </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+	name: "TheNavbar"
+})
+</script>
+
+<style scoped>
+.router-btn {
+	@apply mt-7 py-1 px-2 text-2xl font-medium rounded-md text-gray-400 border-2 border-gray-500;
+}
+
+.router-link-exact-active.router-btn {
+	@apply text-blue-400 font-bold bg-gray-900 border-2
+}
+</style>

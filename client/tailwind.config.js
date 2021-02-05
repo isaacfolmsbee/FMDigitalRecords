@@ -2,7 +2,21 @@ module.exports = {
 	purge: ['./public/index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
 	darkMode: false, // or 'media' or 'class'
 	theme: {
-		extend: {},
+		extend: {
+			animation: {
+				'slide-fade-in': 'slide-in 0.28s linear, fade-in 0.3s linear'
+			},
+			keyframes: {
+				'slide-in': {
+					'0%': { right: '-50px' },
+					'100%': { right: 0 },
+				},
+				'fade-in': {
+					'0%': { opacity: 0 },
+					'100%': { opacity: 1 },
+				}
+			}
+		},
 		colors: {
 			'blue': {
 				'50': '#91d4f7',
