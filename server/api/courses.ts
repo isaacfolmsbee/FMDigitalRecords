@@ -21,7 +21,7 @@ router.post('/', async (req: any, res: any) => {
 		weeklyLabHours: Joi.number().integer().min(1),
 		labFee: Joi.number().min(1),
 		prerequisite: Joi.string(),
-		academicYear: Joi.string().regex(RegExp('\\d\\d\\d\\d-\\d\\d\\d\\d')),
+		academicYear: Joi.string().required().regex(RegExp('[0-9]{4}-[0-9]{4}')),
 	}).validate(req.body);
 	if (error) {
 		return res.status(400).send(error.details[0].message);
