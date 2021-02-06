@@ -46,6 +46,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import { getFaculty } from '../api/faculty';
 
 export default Vue.extend({
 	name: 'Faculty',
@@ -53,59 +54,11 @@ export default Vue.extend({
 		return {
 			query: '',
 			isMobile: screen.width <= 1023 ? true : false,
-			tableData: [
-				{
-					"_id": "601dcdc703f0f879cee04734",
-					"lastName": "Archile",
-					"firstName": "Jimmy",
-					"middleInitial": null,
-					"suffix": null,
-					"role": "Student",
-					"department": "Computer Information Systems",
-					"academicYear": "2018-202"
-				},
-				{
-					"_id": "601dcdae03f0f879cee04732",
-					"lastName": "Archile",
-					"firstName": "Jimmy",
-					"middleInitial": null,
-					"suffix": null,
-					"role": "Student",
-					"department": "Computer Information Systems",
-					"academicYear": "2018-2020"
-				},
-				{
-					"_id": "601dcd9d03f0f879cee04731",
-					"lastName": "Folmsbee",
-					"firstName": "Jimmy",
-					"middleInitial": null,
-					"suffix": null,
-					"role": "Student",
-					"department": "Physical Education Chairman of Division of Health and Physical Education, Director of Athletics",
-					"academicYear": "2018-2020"
-				},
-				{
-					"_id": "601dcdbb03f0f879cee04733",
-					"lastName": "Archile",
-					"firstName": "Jimmy",
-					"middleInitial": null,
-					"suffix": null,
-					"role": "Student",
-					"department": "Computer Information Systems",
-					"academicYear": "2018-2021"
-				},
-				{
-					"_id": "601dcc4c60f02e7776e3e031",
-					"lastName": "Folmsbee",
-					"firstName": "Isaac",
-					"middleInitial": null,
-					"suffix": null,
-					"role": "Student",
-					"department": "Computer Information Systems",
-					"academicYear": "2019-2021"
-				}
-			]
+			tableData: {},
 		}
+	},
+	async created() {
+		this.tableData = await getFaculty();
 	},
 	methods: {
 		print() {
