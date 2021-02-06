@@ -15,7 +15,7 @@
 				<div v-if="record.middleInitial" class="table-row"><span class="table-label">Middle Initial</span><span class="table-data">{{ record.middleInitial }}</span></div>
 				<div v-if="record.suffix" class="table-row"><span class="table-label">Suffix</span><span class="table-data">{{ record.suffix }}</span></div>
 				<div class="table-row"><span class="table-label">Role</span><span class="table-data">{{ record.role }}</span></div>
-				<div v-if="record.department" class="table-row"><span class="table-label">Department</span><span class="table-data">Physical Education Chairman of Division of Health and Physical Education, Director of Athletics</span></div>
+				<div v-if="record.department" class="table-row"><span class="table-label">Department</span><span class="table-data">{{ record.department }}</span></div>
 				<div class="table-row"><span class="table-label">Academic Year</span><span class="table-data">{{ record.academicYear }}</span></div>
 			</div>
 		</div>
