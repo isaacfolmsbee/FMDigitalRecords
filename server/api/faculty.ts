@@ -34,10 +34,32 @@ router.post('/', async (req: any, res: any) => {
 	res.sendStatus(201);
 });
 
+router.get('/:query', async (req: any, res: any) => {
+	// Validate req body
+	const { error } = Joi.object({
+		query: Joi.string().required().min(1),
+	}).validate(req.params);
+	if (error) {
+		return res.status(400).send(error.details[0].message);
+	}
+
+	const faculty: Collection = await dbHandler('faculty');
+
+	const query: Array<Object> = await faculty
+		.find({ $text: { $search: req.params.query } })
+		.sort({ academicYear: 1, lastName: 1, firstName: 1 })
+		.toArray();
+
+	res.status(200).send(query);
+});
+
 router.get('/', async (req: any, res: any) => {
 	const faculty: Collection = await dbHandler('faculty');
 
-	const query: Array<Object> = await faculty.find().sort({ academicYear: 1, lastName: 1, firstName: 1 }).toArray();
+	const query: Array<Object> = await faculty
+		.find()
+		.sort({ academicYear: 1, lastName: 1, firstName: 1 })
+		.toArray();
 
 	res.status(200).send(query);
 });

@@ -7,3 +7,9 @@ export async function getFaculty() {
 
 	return response.data;
 }
+
+export async function queryFaculty(query: string) {
+	const response = await axios.get(url + query);
+
+	return response.data;
+}
