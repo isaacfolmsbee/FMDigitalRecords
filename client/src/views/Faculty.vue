@@ -2,8 +2,8 @@
 <div class="flex flex-col items-center">
 	<div class="mt-5">
 		<input v-model="query" @keyup.enter="print" type="text" placeholder="Search..."
-		class="h-9 w-44 pl-1 bg-gray-800 rounded-md border border-gray-600 placeholder-gray-300 text-gray-200 font-medium">
-		<button @click="print" type="button" class="ml-2 py-1 px-2 rounded-lg bg-gray-700 text-lg text-gray-300">Search</button>
+		class="h-9 w-44 pl-1 bg-gray-800 rounded-md border focus:outline-none border-gray-600 focus:border-gray-500 placeholder-gray-300 text-gray-200 font-medium">
+		<button @click="print" type="button" class="ml-2 py-1 px-2 rounded-lg bg-gray-700 text-lg text-gray-300 focus:text-gray-100 focus:outline-none">Search</button>
 	</div>
 	<div class="w-full mt-7">
 		<!-- Mobile view table -->

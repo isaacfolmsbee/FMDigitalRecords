@@ -23,7 +23,7 @@ export default Vue.extend({
 
 <style scoped>
 .router-btn {
-	@apply mt-7 py-1 px-2 text-2xl font-medium rounded-md text-gray-400 border-2 border-gray-500;
+	@apply mt-7 py-1 px-2 text-2xl font-medium rounded-md text-gray-400 border-2 border-gray-500 focus:border-gray-200;
 }
 
 .router-link-exact-active.router-btn {
