@@ -1,7 +1,7 @@
 <template>
 <div class="fixed bg-gray-800 w-screen xl:w-40 h-16 xl:h-screen flex xl:flex-col items-center xl:items-start justify-between xl:justify-start">
-	<h1 class="ml-3 xl:ml-2 xl:mt-2 font-bold text-4xl"><span class="text-green-400">F</span><span class="text-blue-400">M</span></h1>
-	<h1 class="mr-auto ml-1 xl:ml-2 mt-2 xl:mt-0 text-gray-500 font-medium text-xl"><span class="hidden xl:inline-block">Digital</span> Records</h1>
+	<router-link class="focus:outline-none" to="/"><h1 class="ml-3 xl:ml-2 xl:mt-2 font-bold text-4xl"><span class="text-green-400">F</span><span class="text-blue-400">M</span></h1></router-link>
+	<h1 class="mr-auto ml-1 xl:ml-2 mt-2 xl:mt-0 text-gray-500 font-medium text-xl cursor-default"><span class="hidden xl:inline-block">Digital</span> Records</h1>
 	<svg @click="$emit('toggleModal')" class="xl:hidden h-10 w-10 mr-3 text-gray-500 fill-current cursor-pointer" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
 
 	<div class="hidden xl:flex flex-grow flex-col mt-4 mx-auto items-center">
