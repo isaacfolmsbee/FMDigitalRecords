@@ -1,10 +1,11 @@
 import express from 'express';
 import mongodb, { Collection } from 'mongodb';
 import { dbHandler } from '../tools/db';
+import { auth } from '../tools/auth';
 import Joi from 'joi';
 const router = express.Router();
 
-router.post('/', async (req: any, res: any) => {
+router.post('/', auth('writeCourses'), async (req: any, res: any) => {
 	// Validate req body
 	const { error } = Joi.object({
 		courseCode: Joi.string()
@@ -42,6 +43,25 @@ router.post('/', async (req: any, res: any) => {
 	});
 
 	res.sendStatus(201);
+});
+
+router.get('/:query', async (req: any, res: any) => {
+	// Validate req body
+	const { error } = Joi.object({
+		query: Joi.string().required().min(1),
+	}).validate(req.params);
+	if (error) {
+		return res.status(400).send(error.details[0].message);
+	}
+
+	const courses: Collection = await dbHandler('courses');
+
+	const query: Array<Object> = await courses
+		.find({ $text: { $search: req.params.query } })
+		.sort({ academicYear: 1, courseCode: 1, courseName: 1 })
+		.toArray();
+
+	res.status(200).send(query);
 });
 
 router.get('/', async (req: any, res: any) => {

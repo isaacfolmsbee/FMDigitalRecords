@@ -8,6 +8,7 @@ dotenv.config();
 // Import routess
 import { router as faculty } from './api/faculty';
 import { router as courses } from './api/courses';
+import { router as user } from './api/user';
 
 // Middlewares
 app.use(express.json());
@@ -15,6 +16,7 @@ app.use(express.json());
 // Route Middlewares
 app.use('/api/faculty', faculty);
 app.use('/api/courses', courses);
+app.use('/api/user', user);
 
 const port: any = process.env.PORT || 5000;
 
