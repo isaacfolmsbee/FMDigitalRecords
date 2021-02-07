@@ -25,6 +25,16 @@ const routes: Array<RouteConfig> = [
 		name: 'Yearbook',
 		component: () => import('../views/Yearbook.vue'),
 	},
+	{
+		path: '/login',
+		name: 'Login',
+		component: () => import('../views/Login.vue'),
+	},
+	{
+		path: '/logout',
+		name: 'Logout',
+		component: () => import('../views/Logout.vue'),
+	},
 ];
 
 const router = new VueRouter({

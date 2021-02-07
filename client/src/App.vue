@@ -1,8 +1,8 @@
 <template>
 <div class="w-full h-full">
-	<TheNavbar class="z-10" @toggleModal="isModalOpen = !isModalOpen" />
-	<TheNavbarModal v-if="isModalOpen" @closeModal="isModalOpen = !isModalOpen" />
-	<router-view class="pt-16 xl:pt-0 xl:pl-40 z-10"></router-view>
+	<TheNavbar :JWT="JWT" class="z-10" @toggleModal="isModalOpen = !isModalOpen" />
+	<TheNavbarModal :JWT="JWT" v-if="isModalOpen" @closeModal="isModalOpen = !isModalOpen" />
+	<router-view @updateJWT="updateJWT" class="pt-16 xl:pt-0 xl:pl-40"></router-view>
 </div>
 </template>
 
@@ -19,7 +19,13 @@ export default Vue.extend({
 	},
 	data() {
 		return {
+			JWT: sessionStorage.getItem('authtoken'),
 			isModalOpen: false,
+		}
+	},
+	methods: {
+		updateJWT() {
+			this.JWT = sessionStorage.getItem('authtoken');
 		}
 	}
 })
