@@ -18,6 +18,17 @@ app.use('/api/faculty', faculty);
 app.use('/api/courses', courses);
 app.use('/api/user', user);
 
+// Handle a production environment
+if (process.env.NODE_ENV == 'production') {
+	console.log('production mode detected');
+
+	// Static folder
+	app.use(express.static(__dirname + '/static/'));
+
+	// Route all 'gets' to  static/index.html for VueJS
+	app.get(/.*/, (req, res) => res.sendFile(__dirname + '/static/index.html'));
+}
+
 const port: any = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server started on port: ${port}`));
