@@ -12,7 +12,12 @@ import { router as courses } from './api/courses';
 import { router as user } from './api/user';
 
 // Middlewares
-app.use(helmet());
+app.use(helmet({
+	contentSecurityPolicy: false,
+	expectCt: false,
+	hsts: false,
+	dnsPrefetchControl: false,
+}));
 app.use(express.json());
 
 // Route Middlewares
