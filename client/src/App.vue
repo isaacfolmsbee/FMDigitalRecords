@@ -8,8 +8,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import TheNavbar from '@/components/TheNavbar.vue'
-import TheNavbarModal from '@/components/TheNavbarModal.vue'
+import TheNavbar from './components/TheNavbar.vue'
+import TheNavbarModal from './components/TheNavbarModal.vue'
 
 export default Vue.extend({
 	name: "App",

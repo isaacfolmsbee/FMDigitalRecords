@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import dotenv from 'dotenv';
+import helmet from 'helmet';
 const app: Application = express();
 
 // Import ENV variables
@@ -11,6 +12,7 @@ import { router as courses } from './api/courses';
 import { router as user } from './api/user';
 
 // Middlewares
+app.use(helmet());
 app.use(express.json());
 
 // Route Middlewares

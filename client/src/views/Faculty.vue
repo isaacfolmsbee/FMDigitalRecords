@@ -3,7 +3,7 @@
 	<div class="mt-5">
 		<input v-model="query" @keyup.enter="queryData" type="text" placeholder="Search..."
 		class="h-9 w-44 pl-1 bg-gray-800 rounded-md border focus:outline-none border-gray-600 focus:border-gray-500 placeholder-gray-300 text-gray-200 font-medium">
-		<button @click="queryData" type="button" class="ml-2 py-1 px-2 rounded-lg bg-gray-700 text-lg text-gray-300 focus:text-gray-100 focus:outline-none">Search</button>
+		<button @click="queryData" type="button" class="ml-2 py-1 px-2 rounded-lg bg-gray-700 text-lg text-gray-300 focus:text-gray-100 hover:text-gray-100 focus:outline-none">Search</button>
 	</div>
 	<div class="w-full mt-7">
 		<!-- Mobile view table -->
@@ -24,7 +24,13 @@
 			<table class="w-11/12 mx-auto">
 				<thead class="bg-gray-600">
 					<tr class="text-lg text-gray-100 whitespace-nowrap">
-						<th>Last Name</th><th>First Name</th><th>Middle Initial</th><th>Suffix</th><th>Role</th><th>Department</th><th>Academic Year</th>
+						<th class="desktop-table-header">Last Name</th>
+						<th class="desktop-table-header">First Name</th>
+						<th class="desktop-table-header">Middle Initial</th>
+						<th class="desktop-table-header">Suffix</th>
+						<th class="desktop-table-header">Role</th>
+						<th class="desktop-table-header">Department</th>
+						<th class="px-1">Academic Year</th>
 					</tr>
 				</thead>
 				<tbody class="text-gray-300 border-r border-b border-gray-600">
@@ -89,6 +95,10 @@ export default Vue.extend({
 
 .table-data {
 	@apply mx-auto text-center w-48 sm:w-96;
+}
+
+.desktop-table-header {
+	@apply px-1 border-r border-gray-700;
 }
 
 .desktop-table-data {
