@@ -5,7 +5,7 @@ import { auth } from '../tools/auth';
 import Joi from 'joi';
 const router = express.Router();
 
-router.post('/', auth('writeFaculty'), async (req: any, res: any) => {
+router.post('/', auth(''), async (req: any, res: any) => {
 	// Validate req body
 	const { error } = Joi.object({
 		lastName: Joi.string().required().min(1),

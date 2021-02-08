@@ -2,7 +2,7 @@
 <div class="w-full h-full">
 	<TheNavbar :JWT="JWT" class="z-10" @toggleModal="isModalOpen = !isModalOpen" />
 	<TheNavbarModal :JWT="JWT" v-if="isModalOpen" @closeModal="isModalOpen = !isModalOpen" />
-	<router-view @updateJWT="updateJWT" class="pt-16 xl:pt-0 xl:pl-40"></router-view>
+	<router-view @updateJWT="updateJWT" :JWT="JWT" class="pt-16 xl:pt-0 xl:pl-40"></router-view>
 </div>
 </template>
 

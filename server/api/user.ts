@@ -13,9 +13,6 @@ router.post('/', auth('admin'), async (req: any, res: any) => {
 		username: Joi.string().required().min(4),
 		password: Joi.string().required().min(8),
 		isAdmin: Joi.boolean(),
-		permissions: Joi.array().items(
-			Joi.string().valid('writeCourse', 'writeFaculty', 'writeYearbook')
-		),
 	}).validate(req.body);
 	if (error) {
 		return res.status(400).send(error.details[0].message);
@@ -37,31 +34,9 @@ router.post('/', auth('admin'), async (req: any, res: any) => {
 		username: req.body.username,
 		password: hashedPassword,
 		isAdmin: req.body.isAdmin ?? false,
-		permissions: req.body.permissions ?? [],
 	});
 
 	res.sendStatus(201);
-});
-
-router.put('/permission/:userID', auth('admin'), async (req: any, res: any) => {
-	//Validate the request
-	const { error } = Joi.object({
-		permissions: Joi.array().items(
-			Joi.string().valid('writeCourse', 'writeFaculty', 'writeYearbook')
-		),
-	}).validate(req.body);
-	if (error) {
-		return res.status(400).send(error.details[0].message);
-	}
-
-	const users: Collection = await dbHandler('users');
-
-	await users.updateOne(
-		{ _id: new mongodb.ObjectID(req.params.userID) },
-		{ $set: { permissions: req.body.permissions } }
-	);
-
-	res.sendStatus(200);
 });
 
 router.delete('/:userID', auth('admin'), async (req: any, res: any) => {
@@ -107,7 +82,6 @@ router.post('/login', async (req: any, res: any) => {
 			userid: user._id,
 			username: user.username,
 			isAdmin: user.isAdmin,
-			permissions: user.permissions,
 		},
 		TOKEN_SECRET
 	);

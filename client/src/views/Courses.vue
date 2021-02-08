@@ -58,7 +58,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { getCourses, queryCourses } from '../api/courses';
+import { getCourses, queryCourses } from '@/api/courses';
 
 export default Vue.extend({
 	name: 'Faculty',

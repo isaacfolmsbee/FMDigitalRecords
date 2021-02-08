@@ -46,7 +46,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { getFaculty, queryFaculty } from '../api/faculty';
+import { getFaculty, queryFaculty } from '@/api/faculty';
 
 export default Vue.extend({
 	name: 'Faculty',

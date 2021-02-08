@@ -9,6 +9,7 @@
 		<router-link class="router-btn" to="/courses">Courses</router-link>
 		<router-link class="router-btn" to="/faculty">Faculty</router-link>
 		<router-link class="router-btn" to="/yearbook">Yearbook</router-link>
+		<router-link v-if="isLoggedIn" class="router-btn" to="/add-record">Add Record</router-link>
 		<router-link v-if="isLoggedIn == false" to="/login" class="mt-auto mb-8 text-3xl font-bold text-green-400">Login</router-link>
 		<router-link v-if="isLoggedIn" to="/logout" class="mt-auto mb-8 text-3xl font-bold text-blue-400">Logout</router-link>
 	</div>
@@ -17,6 +18,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+
 export default Vue.extend({
 	name: "TheNavbar",
 	props: {
@@ -35,7 +37,7 @@ export default Vue.extend({
 
 <style scoped>
 .router-btn {
-	@apply mt-7 py-1 px-2 text-2xl font-medium rounded-md text-gray-400 border-2 border-gray-500 focus:border-gray-200;
+	@apply mt-6 py-0.5 px-1.5 text-2xl font-medium rounded-md text-gray-400 border-2 border-gray-500 focus:border-gray-200;
 }
 
 .router-link-exact-active.router-btn {

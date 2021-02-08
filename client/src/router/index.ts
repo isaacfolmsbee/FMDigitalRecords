@@ -26,6 +26,18 @@ const routes: Array<RouteConfig> = [
 		component: () => import('../views/Yearbook.vue'),
 	},
 	{
+		path: '/add-record',
+		name: 'AddRecord',
+		beforeEnter(to, from, next) {
+			if (sessionStorage.getItem('authtoken')) {
+				next();
+			} else {
+				next('/');
+			}
+		},
+		component: () => import('../views/AddRecord.vue'),
+	},
+	{
 		path: '/login',
 		name: 'Login',
 		component: () => import('../views/Login.vue'),
