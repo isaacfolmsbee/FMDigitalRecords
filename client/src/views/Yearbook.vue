@@ -8,8 +8,8 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'Yearbook',
-  created() {
+	name: 'Yearbook',
+	created() {
 		document.title = 'Yearbook | FM Records';
 	}
 });

@@ -40,6 +40,9 @@ export default Vue.extend({
 				}
 			}
 		}
+	},
+	created() {
+		document.title = 'Register | FM Records';
 	}
 });
 </script>

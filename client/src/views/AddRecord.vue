@@ -22,8 +22,10 @@ export default Vue.extend({
 		return {
 			currentForm: '',
 		}
+	},
+	created() {
+		document.title = 'Add Record | FM Records';
 	}
-
 })
 </script>
 

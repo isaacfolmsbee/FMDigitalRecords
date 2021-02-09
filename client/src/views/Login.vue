@@ -35,6 +35,9 @@ export default Vue.extend({
 				this.error = 'Invalid login information';
 			}
 		}
+	},
+	created() {
+		document.title = 'Login | FM Records';
 	}
 });
 </script>
