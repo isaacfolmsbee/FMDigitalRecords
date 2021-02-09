@@ -25,18 +25,18 @@ const routes: Array<RouteConfig> = [
 		name: 'Yearbook',
 		component: () => import('../views/Yearbook.vue'),
 	},
-	{
-		path: '/add-record',
-		name: 'AddRecord',
-		beforeEnter(to, from, next) {
-			if (sessionStorage.getItem('authtoken')) {
-				next();
-			} else {
-				next('/');
-			}
-		},
-		component: () => import('../views/AddRecord.vue'),
-	},
+	// {
+	// 	path: '/add-record',
+	// 	name: 'AddRecord',
+	// 	beforeEnter(to, from, next) {
+	// 		if (sessionStorage.getItem('authtoken')) {
+	// 			next();
+	// 		} else {
+	// 			next('/');
+	// 		}
+	// 	},
+	// 	component: () => import('../views/AddRecord.vue'),
+	// },
 	{
 		path: '/register',
 		name: 'Register',

@@ -4,7 +4,7 @@
 	<input class="input" type="text" v-model="username" placeholder="Username...">
 	<input class="input" type="password" v-model="password" placeholder="Password...">
 	<input class="input" type="password" v-model="confirmPassword" placeholder="Confirm Password...">
-	<button @click="register()" class="mt-5 w-5/6 max-w-xs py-1 px-2 rounded-lg bg-gray-700 text-lg text-gray-400 focus:text-gray-200 focus:outline-none hover:text-gray-200">Login</button>
+	<button @click="register()" class="mt-5 w-5/6 max-w-xs py-1 px-2 rounded-lg bg-gray-700 text-lg text-gray-400 focus:text-gray-200 focus:outline-none hover:text-gray-200">Register</button>
 	<div class="flex items-center mt-3 text-sm text-gray-400 cursor-default">
 		<p>Already have an account?</p>
 		<router-link class="ml-1.5 text-blue-400 text-base underline" to="/login">Login</router-link>
@@ -35,7 +35,8 @@ export default Vue.extend({
 					await register(this.username, this.password);
 					this.$router.push('login');
 				} catch (error) {
-					this.error = 'Invalid login information';
+					console.log(error);
+					this.error = error.response.data;
 				}
 			}
 		}
