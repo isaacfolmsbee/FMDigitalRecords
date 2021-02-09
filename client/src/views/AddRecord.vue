@@ -6,7 +6,7 @@
 		<button @click="currentForm = 'faculty'" class="btn">Faculty</button>
 		<!-- <button @click="currentForm = 'courses'" class="btn">Courses</button> -->
 	</div>
-	<TheFacultyForm v-if="currentForm === 'faculty'" :JWT="JWT" />
+	<TheFacultyForm v-if="currentForm === 'faculty'" />
 </div>
 </template>
 <script lang="ts">
@@ -17,12 +17,6 @@ export default Vue.extend({
 	name: "AddRecord",
 	components: {
 		TheFacultyForm,
-	},
-	props: {
-		JWT: {
-			type: String,
-			default: null,
-		}
 	},
 	data() {
 		return {

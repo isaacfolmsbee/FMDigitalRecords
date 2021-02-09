@@ -24,12 +24,6 @@ import { postFacultyRecord } from '../../api/faculty';
 
 export default Vue.extend({
 	name: "TheFacultyForm",
-	props: {
-		JWT: {
-			type: String,
-			default: null,
-		}
-	},
 	data() {
 		return {
 			queryObject: {
@@ -46,21 +40,25 @@ export default Vue.extend({
 	},
 	methods: {
 		async postRecord() {
-			try {
-				await postFacultyRecord(this.queryObject, this.JWT);
+			const JWT = sessionStorage.getItem('authtoken')
+			if (JWT) {
+				try {
+					await postFacultyRecord(this.queryObject, JWT);
 
-				this.queryObject = {
-					lastName: '',
-					firstName: '',
-					middleInitial: '',
-					suffix: '',
-					role: '',
-					department: '',
-					academicYear: '',
+					this.queryObject = {
+						lastName: '',
+						firstName: '',
+						middleInitial: '',
+						suffix: '',
+						role: '',
+						department: '',
+						academicYear: '',
+					}
+				} catch (error) {
+					this.error = error.response.data;
 				}
-			} catch (error) {
-				this.error = error.response.data;
 			}
+			
 		}
 	}
 })
