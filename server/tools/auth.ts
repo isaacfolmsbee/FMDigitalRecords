@@ -23,6 +23,7 @@ export function auth(permission: string) {
 		// Validate their ID params
 		const { error } = Joi.object({
 			userID: Joi.string().hex().min(24).max(24),
+			entryID: Joi.string().hex().min(24).max(24),
 		}).validate(req.params);
 		if (error) {
 			return res.status(400).send('Invalid Parameter');

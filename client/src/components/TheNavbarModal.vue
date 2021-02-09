@@ -6,8 +6,8 @@
 		<span class="mt-8" @click="$emit('closeModal')"><router-link class="router-btn" to="/courses">Courses</router-link></span>
 		<span class="mt-8" @click="$emit('closeModal')"><router-link class="router-btn" to="/faculty">Faculty</router-link></span>
 		<span class="mt-8" @click="$emit('closeModal')"><router-link class="router-btn" to="/yearbook">Yearbook</router-link></span>
-		<span v-if="isLoggedIn" class="mt-8" @click="$emit('closeModal')"><router-link class="router-btn" to="/add-record">Add Record</router-link></span>
-		<span v-if="isLoggedIn == false" @click="$emit('closeModal')" class="mt-auto"><router-link to="/login" class="text-3xl font-bold text-green-400">Login</router-link></span>
+		<span v-if="canEditDB" class="mt-8" @click="$emit('closeModal')"><router-link class="router-btn" to="/add-record">Add Record</router-link></span>
+		<span v-if="!isLoggedIn" @click="$emit('closeModal')" class="mt-auto"><router-link to="/login" class="text-3xl font-bold text-green-400">Login</router-link></span>
 		<span v-if="isLoggedIn" @click="$emit('closeModal')" class="mt-auto"><router-link to="/logout" class="text-3xl font-bold text-blue-400">Logout</router-link></span>
 	</div>
 </div>
@@ -19,6 +19,10 @@ import Vue from 'vue'
 export default Vue.extend({
 	name: "TheNavbarModal",
 	props: {
+		canEditDB: {
+			type: Boolean,
+			default: false,
+		},
 		JWT: {
 			type: String,
 			default: null,

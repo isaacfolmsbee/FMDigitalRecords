@@ -9,8 +9,8 @@
 		<router-link class="router-btn" to="/courses">Courses</router-link>
 		<router-link class="router-btn" to="/faculty">Faculty</router-link>
 		<router-link class="router-btn" to="/yearbook">Yearbook</router-link>
-		<router-link v-if="isLoggedIn" class="router-btn" to="/add-record">Add Record</router-link>
-		<router-link v-if="isLoggedIn == false" to="/login" class="mt-auto mb-8 text-3xl font-bold text-green-400">Login</router-link>
+		<router-link v-if="canEditDB" class="router-btn" to="/add-record">Add Record</router-link>
+		<router-link v-if="!isLoggedIn" to="/login" class="mt-auto mb-8 text-3xl font-bold text-green-400">Login</router-link>
 		<router-link v-if="isLoggedIn" to="/logout" class="mt-auto mb-8 text-3xl font-bold text-blue-400">Logout</router-link>
 	</div>
 </div>
@@ -22,6 +22,10 @@ import Vue from 'vue'
 export default Vue.extend({
 	name: "TheNavbar",
 	props: {
+		canEditDB: {
+			type: Boolean,
+			default: false,
+		},
 		JWT: {
 			type: String,
 			default: null,

@@ -9,7 +9,7 @@ export default Vue.extend({
 	name: "Logout",
 	created() {
 		sessionStorage.removeItem('authtoken');
-		this.$emit('updateJWT');
+		this.$emit('updateUser', undefined);
 		this.$router.push('/');
 	}
 })

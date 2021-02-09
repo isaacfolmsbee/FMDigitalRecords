@@ -3,17 +3,18 @@
 	<p class="text-xl text-red-500 font-bold">{{ error }}</p>
 	<input class="input" type="text" v-model="username" placeholder="Username...">
 	<input class="input" type="password" v-model="password" placeholder="Password...">
-	<button @click="login()" class="mt-5 w-5/6 max-w-xs py-1 px-2 rounded-lg bg-gray-700 text-lg text-gray-400 focus:text-gray-200 focus:outline-none hover:text-gray-200">Login</button>
+	<input class="input" type="password" v-model="confirmPassword" placeholder="Confirm Password...">
+	<button @click="register()" class="mt-5 w-5/6 max-w-xs py-1 px-2 rounded-lg bg-gray-700 text-lg text-gray-400 focus:text-gray-200 focus:outline-none hover:text-gray-200">Login</button>
 	<div class="flex items-center mt-3 text-sm text-gray-400 cursor-default">
-		<p>Need an account?</p>
-		<router-link class="ml-1.5 text-blue-400 text-base underline" to="/register">Register</router-link>
+		<p>Already have an account?</p>
+		<router-link class="ml-1.5 text-blue-400 text-base underline" to="/login">Login</router-link>
 	</div>
 </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { login } from '../api/user';
+import { register } from '../api/user';
 
 export default Vue.extend({
 	name: 'Login',
@@ -21,18 +22,21 @@ export default Vue.extend({
 		return {
 			username: '',
 			password: '',
+			confirmPassword: '',
 			error: '',
 		}
 	},
 	methods: {
-		async login() {
-			try {
-				const response = await login(this.username, this.password);
-				
-				this.$emit('updateUser', response);
-				this.$router.push('/');
-			} catch (error) {
-				this.error = 'Invalid login information';
+		async register() {
+			if (this.password !== this.confirmPassword) {
+				this.error = "Passwords don't match";
+			} else {
+				try {
+					await register(this.username, this.password);
+					this.$router.push('login');
+				} catch (error) {
+					this.error = 'Invalid login information';
+				}
 			}
 		}
 	}
